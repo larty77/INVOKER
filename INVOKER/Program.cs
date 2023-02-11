@@ -30,5 +30,7 @@ namespace INVOKER
         public void WriteMsg(string msg) => Console.WriteLine(msg);
 
         private int Sum(int first, int second) { return first + second; }
+
+        private int Random() { return Random.Next(0, 100); }
     }
 }
