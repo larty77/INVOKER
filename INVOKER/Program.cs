@@ -16,7 +16,7 @@ namespace INVOKER
 
             Invoker.Invoke(target, "WriteMsg", "Test!");
 
-            Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 43));
+            Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 144));
         }
 
 
