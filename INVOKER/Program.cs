@@ -12,11 +12,11 @@ namespace INVOKER
 
             Invoker.Log += Console.WriteLine;
 
-            Invoker.Invoke(target, "WriteTime"); //DateTime.Now
+            Invoker.Invoke(target, "WriteTime");
 
-            Invoker.Invoke(target, "WriteMsg", "Test!"); //Test!
+            Invoker.Invoke(target, "WriteMsg", "Test!");
 
-            Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 43)); //67
+            Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 43));
         }
 
 
@@ -25,10 +25,10 @@ namespace INVOKER
     internal class Class
     {
 
-        public void WriteTime() => Console.WriteLine(DateTime.Now);
+        private void WriteTime() => Console.WriteLine(DateTime.Now);
 
         public void WriteMsg(string msg) => Console.WriteLine(msg);
 
-        public int Sum(int first, int second) { return first + second; }
+        private int Sum(int first, int second) { return first + second; }
     }
 }

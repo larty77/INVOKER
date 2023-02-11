@@ -10,14 +10,14 @@ namespace INVOKER.src
         {
             try
             {
-                if(target is null)
+                if (target is null)
                     throw new ArgumentNullException(nameof(target));
 
-                if(methodName is null)
+                if (methodName is null)
                     throw new AbandonedMutexException(nameof(methodName));
 
                 Type type = target.GetType();
-                MethodInfo method = type.GetMethod(methodName)!;
+                MethodInfo method = type.GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)!;
 
                 if (method is null)
                     throw new Exception($"[{methodName}] Method not found");
