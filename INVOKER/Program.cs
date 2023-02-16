@@ -8,29 +8,39 @@ namespace INVOKER
     {
         public static void Main(string[] args)
         {
-            Class target = new Class();
+            try
+            {
+                Class target = new Class();
 
-            Invoker.Log += Console.WriteLine;
+                Invoker.Invoke(target, "WriteTime");
 
-            Invoker.Invoke(target, "WriteTime");
+                Invoker.Invoke<int>(target, "WriteType");
 
-            Invoker.Invoke(target, "WriteMsg", "Test!");
+                Invoker.Invoke(target, "WriteMsg", "Test!");
 
-            Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 43));
+                Console.WriteLine(Invoker.Invoke(target, "Sum", 24, 43));
+
+                Console.WriteLine(Invoker.Invoke(target, "GetRandom"));
+
+                Console.WriteLine(Invoker.Invoke(target, ""));
+            }
+
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
-
 
     }
 
     internal class Class
     {
 
-        private void WriteTime() => Console.WriteLine(DateTime.Now);
+        public void WriteTime() => Console.WriteLine(DateTime.Now);
+
+        private static void WriteType<T>() => Console.WriteLine(typeof(T));
 
         public void WriteMsg(string msg) => Console.WriteLine(msg);
 
-        private int Sum(int first, int second) { return first + second; }
+        private int Sum(int first, int second) => first + second; 
 
-        private int Random() { return Random.Next(0, 100); }
+        private static int GetRandom() => new Random().Next(0, 100); 
     }
 }
